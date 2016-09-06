@@ -9,8 +9,8 @@ public class HelloWorld {
         HelloWorld hello = new HelloWorld();
 
         hello.letsGetCounters();
-
         hello.letsGetNthCharacters(2, false); //oasepa
+        hello.convertDigitsToNamesInSubstring(0, 3);
 
     }
 
@@ -75,6 +75,45 @@ public class HelloWorld {
 
 
         System.out.println("Return String == " + returnString);
+    }
+
+    public void convertDigitsToNamesInSubstring(int startPosition, int endPosition) {
+        int number = 1234;
+        String alphabetSum = "";
+        while (number > 0) {
+            int digit = number % 10;
+            String alphabet = "";
+
+            if (digit == 0) {
+                alphabet = "Zero";
+            } else if (digit == 1) {
+                alphabet = "One";
+            } else if (digit == 2) {
+                alphabet = "Two";
+            } else if (digit == 3) {
+                alphabet = "Three";
+            } else if (digit == 4) {
+                alphabet = "Four";
+            } else if (digit == 5) {
+                alphabet = "Five";
+            } else if (digit == 6) {
+                alphabet = "Six";
+            } else if (digit == 7) {
+                alphabet = "Seven";
+            } else if (digit == 8) {
+                alphabet = "Eight";
+            } else if (digit == 9) {
+                alphabet = "Nine";
+            }
+
+            alphabetSum = alphabet + alphabetSum;
+            number /= 10;
+            //System.out.println(digit);
+
+        }
+        System.out.println("Text == " + alphabetSum);
+
+
     }
 
 
