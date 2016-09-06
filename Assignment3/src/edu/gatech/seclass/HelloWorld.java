@@ -10,7 +10,7 @@ public class HelloWorld {
 
         hello.letsGetCounters();
 
-        hello.letsGetNthCharacters(3, false);
+        hello.letsGetNthCharacters(2, false); //oasepa
 
     }
 
@@ -46,18 +46,38 @@ public class HelloWorld {
 
         int counter = 0;
         //String currentString = "I'd b3tt3r put s0me d161ts in this 5tr1n6, right?";
-        String currentString = "apple is a good";
+        String currentString = "appleis agood";
         if (currentString == null) {
             throw new NullPointerException("String cannot be null");
         }
         String returnString = "";
-        for (int i = n; i < currentString.length(); i = i + n) {
-            char c = currentString.charAt(i);
-            returnString = returnString + c;
+
+
+        int startingPoint = n;
+        int endingPoint = currentString.length();
+        int step = n;
+        if (startFromEnd == true) {
+            startingPoint = currentString.length() - (n + 1);
+            endingPoint = 0;
+            step = -n;
+            for (int i = startingPoint; i >= endingPoint; i = i + step) {
+                char c = currentString.charAt(i);
+                returnString = returnString + c;
+            }
+        } else if (startFromEnd == false) {
+
+            for (int i = startingPoint; i < endingPoint; i = i + step) {
+                char c = currentString.charAt(i);
+                returnString = returnString + c;
+            }
+
         }
+
 
         System.out.println("Return String == " + returnString);
     }
+
+
 }
 
 
