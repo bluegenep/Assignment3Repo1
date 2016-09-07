@@ -27,29 +27,40 @@ public class MyCustomStringTest {
         assertEquals(7, mycustomstring.countNumbers());
     }
 
+    // This test for empty, the method should return 0.
     @Test
     public void testCountNumbers2() {
-        fail("Not yet implemented");
+        mycustomstring.setString("");
+        assertEquals(0, mycustomstring.countNumbers());
     }
 
+    // Test for contiguous sequence of digits
     @Test
     public void testCountNumbers3() {
-        fail("Not yet implemented");
+        mycustomstring.setString("12 and 32 should give 32 and 12");
+        assertEquals(4, mycustomstring.countNumbers());
     }
 
+    //Test for non contiguous sequence of digits
     @Test
     public void testCountNumbers4() {
-        fail("Not yet implemented");
+        mycustomstring.setString("1232 should give 32ab2ffg3 and 12");
+        assertEquals(5, mycustomstring.countNumbers());
     }
 
+    //Test when no numbers are present in the string
     @Test
     public void testCountNumbers5() {
-        fail("Not yet implemented");
+        mycustomstring.setString("Apple oranges and lemons");
+        assertEquals(0, mycustomstring.countNumbers());
     }
 
-    @Test
+    //Test when the string is null
+    @Test(expected = NullPointerException.class)
     public void testCountNumbers6() {
-        fail("Not yet implemented");
+        mycustomstring.setString(null);
+        //System.out.println(mycustomstring.countNumbers());
+        //assertEquals(3, mycustomstring.countNumbers());
     }
 
     @Test
