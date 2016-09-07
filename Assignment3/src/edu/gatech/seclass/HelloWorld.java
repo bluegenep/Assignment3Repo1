@@ -10,13 +10,17 @@ public class HelloWorld {
 
         hello.letsGetCounters();
         hello.letsGetNthCharacters(2, false); //oasepa
-        hello.convertDigitsToNamesInSubstring(0, 3);
+        hello.convertDigitsToNamesInSubstring(5, 7);
 
     }
 
     public void letsGetCounters() {
         int counter = 0;
-        String currentString = "I'd b3tt3r put s0me d161ts in this 5tr1n6, right?";
+        //String currentString = "I'd b3tt3r put s0me d161ts in this 5tr1n6, right?";
+        String currentString = "apppleere23 34";
+        if (currentString == null) {
+            throw new NullPointerException("String cannot be null");
+        }
         for (int i = 0; i < currentString.length(); i++) {
             char c = currentString.charAt(i);
             if (c == '0' || c == '1' || c == '2' || c == '3' || c == '4' || c == '5' || c == '6' || c == '7' || c == '8' || c == '9') {
@@ -77,7 +81,7 @@ public class HelloWorld {
         System.out.println("Return String == " + returnString);
     }
 
-    public void convertDigitsToNamesInSubstring(int startPosition, int endPosition) {
+    public void testconvertDigitsToNamesInSubstring(int startPosition, int endPosition) {
         int number = 1234;
         String alphabetSum = "";
         while (number > 0) {
@@ -110,6 +114,53 @@ public class HelloWorld {
             number /= 10;
             //System.out.println(digit);
 
+        }
+        System.out.println("Text == " + alphabetSum);
+
+
+    }
+
+    public void convertDigitsToNamesInSubstring(int startPosition, int endPosition) {
+        String currentString = "app1234";
+        if (startPosition > endPosition) {
+            throw new IllegalArgumentException("Start Position is greater than End Position");
+        }
+        if ((startPosition < 1) || (endPosition > currentString.length())) {
+            throw new MyIndexOutOfBoundsException("Check your index Bound");
+        }
+
+        if (currentString == null) {
+            throw new NullPointerException("String cannot be null");
+        }
+
+        String alphabetSum = "";
+        for (int i = startPosition - 1; i < endPosition; i++) {
+            char c = currentString.charAt(i);
+            String alphabet = "";
+            if (c == '0') {
+                alphabet = "Zero";
+            } else if (c == '1') {
+                alphabet = "One";
+            } else if (c == '2') {
+                alphabet = "Two";
+            } else if (c == '3') {
+                alphabet = "Three";
+            } else if (c == '4') {
+                alphabet = "Four";
+            } else if (c == '5') {
+                alphabet = "Five";
+            } else if (c == '6') {
+                alphabet = "Six";
+            } else if (c == '7') {
+                alphabet = "Seven";
+            } else if (c == '8') {
+                alphabet = "Eight";
+            } else if (c == '9') {
+                alphabet = "Nine";
+            }
+
+            alphabetSum = alphabetSum + alphabet;
+            //System.out.println(digit);
         }
         System.out.println("Text == " + alphabetSum);
 
