@@ -163,40 +163,94 @@ public class MyCustomStringTest {
     //Check if all the first letters of the number are capitalized
     @Test
     public void testConvertDigitsToNamesInSubstring2() {
-        MyCustomString tester = new MyCustomString();
+        /*MyCustomString tester = new MyCustomString();
         tester.setString("apple123xyz apple1 abc0");
         tester.convertDigitsToNamesInSubstring(1, 23);
+        System.out.println(tester.getString());
+        assertEquals("appleOneTwoThreexyz appleOne abcZero", mycustomstring.getString());*/
+
+        mycustomstring.setString("apple123xyz apple1 abc0");
+        mycustomstring.convertDigitsToNamesInSubstring(1, 23);
+        System.out.println("\n\n");
+        System.out.println(mycustomstring.getString());
         assertEquals("appleOneTwoThreexyz appleOne abcZero", mycustomstring.getString());
     }
 
     @Test
+    //Check  to see if all the numbers are being replaced for 1 -n and numbers are converted invidually even if contiguous
     public void testConvertDigitsToNamesInSubstring3() {
-        fail("Not yet implemented");
+        mycustomstring.setString("123 12 abc 12");
+        mycustomstring.convertDigitsToNamesInSubstring(1, 13);
+        assertEquals("OneTwoThree OneTwo abc OneTwo", mycustomstring.getString());
     }
 
-    @Test
+    //Test when the startPosition > EndPosition  IllegalArgumentException
+    @Test(expected = IllegalArgumentException.class)
     public void testConvertDigitsToNamesInSubstring4() {
-        fail("Not yet implemented");
+        mycustomstring.setString("123 12 abc 12");
+        mycustomstring.convertDigitsToNamesInSubstring(5, 2);
+        assertEquals("OneTwoThree OneTwo abc OneTwo", mycustomstring.getString());
     }
 
-    @Test
+    //Test when the startPosition > EndPosition (both negative numbers) IllegalArgumentException
+    @Test(expected = IllegalArgumentException.class)
+    public void testConvertDigitsToNamesInSubstring10() {
+        mycustomstring.setString("123 12 abc 12");
+        mycustomstring.convertDigitsToNamesInSubstring(-5, -10);
+        assertEquals("OneTwoThree OneTwo abc OneTwo", mycustomstring.getString());
+    }
+
+    //Test when the StartPosition = EndPosition NullPointerException
+    @Test(expected = NullPointerException.class)
     public void testConvertDigitsToNamesInSubstring5() {
-        fail("Not yet implemented");
+        mycustomstring.setString(null);
+        mycustomstring.convertDigitsToNamesInSubstring(2, 2);
+        assertEquals("", mycustomstring.getString());
     }
 
-    @Test
+    //Test when the StartPosition is out of bound i.e. startPosition is 0 :Index Bound Exception
+    @Test(expected = IndexOutOfBoundsException.class)
     public void testConvertDigitsToNamesInSubstring6() {
-        fail("Not yet implemented");
+        mycustomstring.setString("123 12 abc 12");
+        mycustomstring.convertDigitsToNamesInSubstring(0, 7);
+        assertEquals("", mycustomstring.getString());
     }
 
-    @Test
+    //Test when the StartPosition is out of bound i.e. startPosition is less than 0 :Index Bound Exception
+    @Test(expected = IndexOutOfBoundsException.class)
     public void testConvertDigitsToNamesInSubstring7() {
-        fail("Not yet implemented");
+        mycustomstring.setString("123 12 abc 12");
+        mycustomstring.convertDigitsToNamesInSubstring(-5, 7);
+        assertEquals("", mycustomstring.getString());
     }
 
-    @Test
+    //Test when the StartPosition is out of bound i.e. endPosition is greater than string length :Index Bound Exception
+    @Test(expected = IndexOutOfBoundsException.class)
     public void testConvertDigitsToNamesInSubstring8() {
-        fail("Not yet implemented");
+        mycustomstring.setString("123 12 abc 12");
+        mycustomstring.convertDigitsToNamesInSubstring(5, 20);
+        assertEquals("", mycustomstring.getString());
     }
 
+    //Test when the StartPosition is out of bound i.e. endPosition is out of the bound :Index Bound Exception
+    @Test(expected = IndexOutOfBoundsException.class)
+    public void testConvertDigitsToNamesInSubstring9() {
+        mycustomstring.setString("123 12 abc 12");
+        mycustomstring.convertDigitsToNamesInSubstring(-5, -1);
+        assertEquals("", mycustomstring.getString());
+    }
+
+    @Test //Check  to see if all the numbers are being replaced for >1 to n
+    public void testConvertDigitsToNamesInSubstring11() {
+        mycustomstring.setString("123 12 abc 12");
+        mycustomstring.convertDigitsToNamesInSubstring(3, 13);
+        assertEquals("12Three OneTwo abc OneTwo", mycustomstring.getString());
+    }
+
+    @Test //Check  to see if all the numbers are being replaced for >1 to <n
+    public void testConvertDigitsToNamesInSubstring12() {
+        mycustomstring.setString("123 12 abc 12");
+        mycustomstring.convertDigitsToNamesInSubstring(3, 12);
+        assertEquals("12Three OneTwo abc One2", mycustomstring.getString());
+    }
 }
