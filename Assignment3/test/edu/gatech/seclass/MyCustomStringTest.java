@@ -58,7 +58,11 @@ public class MyCustomStringTest {
     //Test when the string is null
     @Test(expected = NullPointerException.class)
     public void testCountNumbers6() {
-        mycustomstring.setString(null);
+        //mycustomstring.setString(null);
+        MyCustomString tester = new MyCustomString();
+        tester.setString("apple123");
+        System.out.print(tester.getString());
+        tester.countNumbers();
         //System.out.println(mycustomstring.countNumbers());
         //assertEquals(3, mycustomstring.countNumbers());
     }
