@@ -55,16 +55,13 @@ public class MyCustomStringTest {
         assertEquals(0, mycustomstring.countNumbers());
     }
 
-    //Test when the string is null
+    //Test for NullPointer Exception when the string is null
     @Test(expected = NullPointerException.class)
     public void testCountNumbers6() {
-        //mycustomstring.setString(null);
         MyCustomString tester = new MyCustomString();
-        tester.setString("apple123");
-        System.out.print(tester.getString());
+        tester.setString(null);
         tester.countNumbers();
-        //System.out.println(mycustomstring.countNumbers());
-        //assertEquals(3, mycustomstring.countNumbers());
+
     }
 
     @Test
@@ -79,34 +76,51 @@ public class MyCustomStringTest {
         assertEquals("'bt t0 6snh r6rh", mycustomstring.getEveryNthCharacterFromBeginningOrEnd(3, true));
     }
 
-    @Test
+    //Test for IllegalArgumentException where n = 0
+    @Test(expected = IllegalArgumentException.class)
     public void testGetEveryNthCharacterFromBeginningOrEnd3() {
-        fail("Not yet implemented");
+        //MyCustomString tester = new MyCustomString();
+        assertEquals("'bt t0 6snh r6rh", mycustomstring.getEveryNthCharacterFromBeginningOrEnd(0, true));
     }
 
-    @Test
+    //Test for IllegalArgumentException where n < 0
+    @Test(expected = IllegalArgumentException.class)
     public void testGetEveryNthCharacterFromBeginningOrEnd4() {
-        fail("Not yet implemented");
+        assertEquals("'bt t0 6snh r6rh", mycustomstring.getEveryNthCharacterFromBeginningOrEnd(-1, true));
     }
 
-    @Test
+    //Test for NullPointerException where the string is null
+    @Test(expected = NullPointerException.class)
     public void testGetEveryNthCharacterFromBeginningOrEnd5() {
-        fail("Not yet implemented");
+        MyCustomString tester = new MyCustomString();
+        tester.setString(null);
+        tester.getEveryNthCharacterFromBeginningOrEnd(1, true);
+
     }
 
+    //Test for if the currentString is empty
     @Test
     public void testGetEveryNthCharacterFromBeginningOrEnd6() {
-        fail("Not yet implemented");
+        MyCustomString tester = new MyCustomString();
+        tester.setString("");
+        assertEquals("", tester.getEveryNthCharacterFromBeginningOrEnd(1, true));
     }
 
+    // Test for if the currentString has less than n characters, the method should return an empty String
     @Test
     public void testGetEveryNthCharacterFromBeginningOrEnd7() {
-        fail("Not yet implemented");
+        MyCustomString tester = new MyCustomString();
+        tester.setString("abcd");
+        assertEquals("", tester.getEveryNthCharacterFromBeginningOrEnd(5, true));
     }
 
+    //Test for if the currentString is equal to n characters, the method should return first occurance
     @Test
     public void testGetEveryNthCharacterFromBeginningOrEnd8() {
-        fail("Not yet implemented");
+        MyCustomString tester = new MyCustomString();
+        tester.setString("abcd");
+        assertEquals("d", tester.getEveryNthCharacterFromBeginningOrEnd(4, false));
+        assertEquals("a", tester.getEveryNthCharacterFromBeginningOrEnd(4, true));
     }
 
     @Test
@@ -146,9 +160,13 @@ public class MyCustomStringTest {
         assertEquals("I'd b3tt3r put sZerome dOneSix1ts in this 5tr1n6, right?", mycustomstring.getString());
     }
 
+    //Check if all the first letters of the number are capitalized
     @Test
     public void testConvertDigitsToNamesInSubstring2() {
-        fail("Not yet implemented");
+        MyCustomString tester = new MyCustomString();
+        tester.setString("apple123xyz apple1 abc0");
+        tester.convertDigitsToNamesInSubstring(1, 23);
+        assertEquals("appleOneTwoThreexyz appleOne abcZero", mycustomstring.getString());
     }
 
     @Test
