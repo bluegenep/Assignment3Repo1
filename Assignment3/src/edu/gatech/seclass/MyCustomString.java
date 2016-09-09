@@ -9,27 +9,21 @@ public class MyCustomString implements MyCustomStringInterface {
         return currentString;
     }
 
+    // Sets the current String
     public void setString(String str) {
         currentString = str;
     }
 
     /**
-     * Returns the number of numbers in the current string, where a number is defined as a
+     * This method countNumbers() returns the number of numbers in the current string, where a number is defined as a
      * contiguous sequence of digits.
-     * <p>
-     * If the current string is empty, the method should return 0.
-     * <p>
+     * If the current string is empty, the method will return 0.
      * Examples:
-     * - countNumbers would return 2 for string "My numbers are 11 and 96".
-     *
-     * @return Number of numbers in the current string
-     * @throws NullPointerException If the current string is nullA
+     * countNumbers will return 2 for string "My numbers are 11 and 96".
      */
-
     public int countNumbers() {
         int counter = 0;
-        //String currentString = "I'd b3tt3r put s0me d161ts in this 5tr1n6, right?";
-        //String currentString = "apppleere23 34";
+
         if (currentString == null) {
             throw new NullPointerException("Null Pointer Exception::: String cannot be null");
         }
@@ -51,6 +45,27 @@ public class MyCustomString implements MyCustomStringInterface {
         }
         return counter;
     }
+
+    /**
+     * This method getEveryNthCharacterFromBeginningOrEnd(int n, boolean startFromEnd)
+     * returns a string that consists of all and only the characters in positions n, 2n, 3n, and
+     * so on in the current string, starting either from the beginning or from the end of the
+     * string. The characters in the resulting string should be in the same order and with the
+     * same case as in the current string.
+     * <p>
+     * If the current string is empty or has less than n characters, the method will return an
+     * empty string.
+     * <p>
+     * Examples:
+     * - For n=2 and a string of one character, the method will return an empty string.
+     * - For n=2 and startFromEnd=false, the method will return the 2nd, 4th, 6th, and so on
+     * characters in the string.
+     * - For n=3 and startFromEnd=true, the method will return the 3rd from the last character
+     * in the string, 6th from the last character in the string, and so on.
+     * <p>
+     * Values n and startFromEnd are passed as parameters. The starting character, whether it is
+     * the first one or the last one in the string, is considered to be in Position 1.
+     */
 
     public String getEveryNthCharacterFromBeginningOrEnd(int n, boolean startFromEnd) {
         if (n <= 0) {
@@ -84,6 +99,17 @@ public class MyCustomString implements MyCustomStringInterface {
         return returnString;
     }
 
+    /**
+     * This method convertDigitsToNamesInSubstring(int startPosition, int endPosition)
+     * replaces the individual digits in the current string, between startPosition and endPosition
+     * (included), with the corresponding English names of those digits, with the first letter
+     * capitalized. The first character in the string is considered to be in Position 1.
+     * Unlike for the previous method, digits are converted individually, even if contiguous.
+     * Examples:
+     * - 460 would be converted to FourSixZero
+     * - 416 would be converted to FourOneSix
+     */
+
     public void convertDigitsToNamesInSubstring(int startPosition, int endPosition) {
 
         if (startPosition > endPosition) {
@@ -104,8 +130,8 @@ public class MyCustomString implements MyCustomStringInterface {
         for (int i = 0; i < startPosition - 1; i++) {
             char c = currentString.charAt(i);
             firstPartString = firstPartString + String.valueOf(c);
-
         }
+
         for (int i = startPosition - 1; i < endPosition; i++) {
             char c = currentString.charAt(i);
             String alphabet = "";
