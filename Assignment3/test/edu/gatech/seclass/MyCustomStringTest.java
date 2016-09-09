@@ -27,21 +27,21 @@ public class MyCustomStringTest {
         assertEquals(7, mycustomstring.countNumbers());
     }
 
-    // This test for empty, the method should return 0.
+    // This test for empty string, the method should return 0.
     @Test
     public void testCountNumbers2() {
         mycustomstring.setString("");
         assertEquals(0, mycustomstring.countNumbers());
     }
 
-    // Test for contiguous sequence of digits
+    // Test for non-contiguous sequence of digits
     @Test
     public void testCountNumbers3() {
         mycustomstring.setString("12 and 32 should give 32 and 12");
         assertEquals(4, mycustomstring.countNumbers());
     }
 
-    //Test for non contiguous sequence of digits
+    //Test for contiguous sequence of digits
     @Test
     public void testCountNumbers4() {
         mycustomstring.setString("1232 should give 32ab2ffg3 and 12");
@@ -98,6 +98,23 @@ public class MyCustomStringTest {
 
     }
 
+    //Test for IllegalArgument Exception where the string is null and n < 0
+    @Test(expected = IllegalArgumentException.class)
+    public void testGetEveryNthCharacterFromBeginningOrEnd15() {
+        MyCustomString tester = new MyCustomString();
+        tester.setString(null);
+        tester.getEveryNthCharacterFromBeginningOrEnd(-1, true);
+    }
+
+    //Test for IllegalArgument Exception where the string is null and n = 0
+    @Test(expected = IllegalArgumentException.class)
+    public void testGetEveryNthCharacterFromBeginningOrEnd16() {
+        MyCustomString tester = new MyCustomString();
+        tester.setString(null);
+        tester.getEveryNthCharacterFromBeginningOrEnd(0, true);
+    }
+
+
     //Test for if the currentString is empty
     @Test
     public void testGetEveryNthCharacterFromBeginningOrEnd6() {
@@ -123,34 +140,52 @@ public class MyCustomStringTest {
         assertEquals("a", tester.getEveryNthCharacterFromBeginningOrEnd(4, true));
     }
 
+    //Test from 1 - n character, when nth character 1, and startFromEnd = false
     @Test
     public void testGetEveryNthCharacterFromBeginningOrEnd9() {
-        fail("Not yet implemented");
+        MyCustomString tester = new MyCustomString();
+        tester.setString("abcd is the first letters");
+        assertEquals("abcd is the first letters", tester.getEveryNthCharacterFromBeginningOrEnd(1, false));
     }
 
+    //Test from 1 - n character, when nth character 1, and startFromEnd = true
     @Test
     public void testGetEveryNthCharacterFromBeginningOrEnd10() {
-        fail("Not yet implemented");
+        MyCustomString tester = new MyCustomString();
+        tester.setString("abcd is the first letters");
+        assertEquals("abcd is the first letters", tester.getEveryNthCharacterFromBeginningOrEnd(1, true));
     }
 
+    //Test from 1 - n character, when nth character 2, and startFromEnd = false
     @Test
     public void testGetEveryNthCharacterFromBeginningOrEnd11() {
-        fail("Not yet implemented");
+        MyCustomString tester = new MyCustomString();
+        tester.setString("abcd is the first letters");
+        assertEquals("bdi h is etr", tester.getEveryNthCharacterFromBeginningOrEnd(2, false));
     }
 
+    //Test from 1 - n character, when nth character 2, and startFromEnd = true
     @Test
     public void testGetEveryNthCharacterFromBeginningOrEnd12() {
-        fail("Not yet implemented");
+        MyCustomString tester = new MyCustomString();
+        tester.setString("abcd is the first letters");
+        assertEquals("bdi h is etr", tester.getEveryNthCharacterFromBeginningOrEnd(2, true));
     }
 
+    //Test from 1 - n character, when nth character 5, and startFromEnd = false
     @Test
     public void testGetEveryNthCharacterFromBeginningOrEnd13() {
-        fail("Not yet implemented");
+        MyCustomString tester = new MyCustomString();
+        tester.setString("abcd is the first letters");
+        assertEquals(" hres", tester.getEveryNthCharacterFromBeginningOrEnd(5, false));
     }
 
+    //Test from 1 - n character, when nth character 5, and startFromEnd = true
     @Test
     public void testGetEveryNthCharacterFromBeginningOrEnd14() {
-        fail("Not yet implemented");
+        MyCustomString tester = new MyCustomString();
+        tester.setString("abcd is the first letters");
+        assertEquals("aiest", tester.getEveryNthCharacterFromBeginningOrEnd(5, true));
     }
 
     @Test
