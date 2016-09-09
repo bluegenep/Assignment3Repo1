@@ -98,7 +98,7 @@ public class MyCustomStringTest {
 
     }
 
-    //Test for IllegalArgument Exception where the string is null and n < 0
+    //Test for IllegalArgument Exception where the string is null and n < 0 :
     @Test(expected = IllegalArgumentException.class)
     public void testGetEveryNthCharacterFromBeginningOrEnd15() {
         MyCustomString tester = new MyCustomString();
