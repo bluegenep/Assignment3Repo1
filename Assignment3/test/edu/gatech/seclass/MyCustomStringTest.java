@@ -21,6 +21,7 @@ public class MyCustomStringTest {
         mycustomstring = null;
     }
 
+    //Default test
     @Test
     public void testCountNumbers1() {
         mycustomstring.setString("I'd b3tt3r put s0me d161ts in this 5tr1n6, right?");
@@ -64,12 +65,21 @@ public class MyCustomStringTest {
 
     }
 
+    //Test with alphanumeric characters
+    @Test
+    public void testCountNumbers7() {
+        mycustomstring.setString("Apple !@#&$^ orange.. ;dfsdf asdf// sdfds\\ \\ fds \\ sdfsf\\and lemons");
+        assertEquals(0, mycustomstring.countNumbers());
+    }
+
+    // Default testcase where the n the number is 3 and startFromEnd = false
     @Test
     public void testGetEveryNthCharacterFromBeginningOrEnd1() {
         mycustomstring.setString("I'd b3tt3r put s0me d161ts in this 5tr1n6, right?");
         assertEquals("d33p md1  i51,it", mycustomstring.getEveryNthCharacterFromBeginningOrEnd(3, false));
     }
 
+    //Default testcase where the nth number is 3 and start from end = true
     @Test
     public void testGetEveryNthCharacterFromBeginningOrEnd2() {
         mycustomstring.setString("I'd b3tt3r put s0me d161ts in this 5tr1n6, right?");
@@ -156,7 +166,7 @@ public class MyCustomStringTest {
         assertEquals("abcd is the first letters", tester.getEveryNthCharacterFromBeginningOrEnd(1, true));
     }
 
-    //Test from 1 - n character, when nth character 2, and startFromEnd = false
+    //Test from 1 - n character, when nth character 2, and startFromEnd = false; odd String length, even nth number
     @Test
     public void testGetEveryNthCharacterFromBeginningOrEnd11() {
         MyCustomString tester = new MyCustomString();
@@ -164,7 +174,7 @@ public class MyCustomStringTest {
         assertEquals("bdi h is etr", tester.getEveryNthCharacterFromBeginningOrEnd(2, false));
     }
 
-    //Test from 1 - n character, when nth character 2, and startFromEnd = true
+    //Test from 1 - n character, when nth character 2, and startFromEnd = true; odd String length, even nth number
     @Test
     public void testGetEveryNthCharacterFromBeginningOrEnd12() {
         MyCustomString tester = new MyCustomString();
@@ -172,7 +182,7 @@ public class MyCustomStringTest {
         assertEquals("bdi h is etr", tester.getEveryNthCharacterFromBeginningOrEnd(2, true));
     }
 
-    //Test from 1 - n character, when nth character 5, and startFromEnd = false
+    //Test from 1 - n character, when nth character 5, and startFromEnd = false; odd string length, odd nth number
     @Test
     public void testGetEveryNthCharacterFromBeginningOrEnd13() {
         MyCustomString tester = new MyCustomString();
@@ -180,7 +190,7 @@ public class MyCustomStringTest {
         assertEquals(" hres", tester.getEveryNthCharacterFromBeginningOrEnd(5, false));
     }
 
-    //Test from 1 - n character, when nth character 5, and startFromEnd = true
+    //Test from 1 - n character, when nth character 5, and startFromEnd = true; odd string length, odd nth number
     @Test
     public void testGetEveryNthCharacterFromBeginningOrEnd14() {
         MyCustomString tester = new MyCustomString();
@@ -188,6 +198,39 @@ public class MyCustomStringTest {
         assertEquals("aiest", tester.getEveryNthCharacterFromBeginningOrEnd(5, true));
     }
 
+    //Test from 1 - n character, when nth character 2, and startFromEnd = false; even String length, even nth number
+    @Test
+    public void testGetEveryNthCharacterFromBeginningOrEnd17() {
+        MyCustomString tester = new MyCustomString();
+        tester.setString("abcd is the first letter");
+        assertEquals("bdi h is etr", tester.getEveryNthCharacterFromBeginningOrEnd(2, false));
+    }
+
+    //Test from 1 - n character, when nth character 2, and startFromEnd = true; even String length, even nth number
+    @Test
+    public void testGetEveryNthCharacterFromBeginningOrEnd18() {
+        MyCustomString tester = new MyCustomString();
+        tester.setString("abcd is the first letter");
+        assertEquals("ac stefrtlte", tester.getEveryNthCharacterFromBeginningOrEnd(2, true));
+    }
+
+    //Test from 1 - n character, when nth character 5, and startFromEnd = false; even string length, odd nth number
+    @Test
+    public void testGetEveryNthCharacterFromBeginningOrEnd19() {
+        MyCustomString tester = new MyCustomString();
+        tester.setString("abcd is the first letter");
+        assertEquals(" hre", tester.getEveryNthCharacterFromBeginningOrEnd(5, false));
+    }
+
+    //Test from 1 - n character, when nth character 5, and startFromEnd = true; even string length, odd nth number
+    @Test
+    public void testGetEveryNthCharacterFromBeginningOrEnd20() {
+        MyCustomString tester = new MyCustomString();
+        tester.setString("abcd is the first letter");
+        assertEquals(" hre", tester.getEveryNthCharacterFromBeginningOrEnd(5, true));
+    }
+
+    //Default test to convert digits only between start position and end position
     @Test
     public void testConvertDigitsToNamesInSubstring1() {
         mycustomstring.setString("I'd b3tt3r put s0me d161ts in this 5tr1n6, right?");
@@ -198,28 +241,29 @@ public class MyCustomStringTest {
     //Check if all the first letters of the number are capitalized
     @Test
     public void testConvertDigitsToNamesInSubstring2() {
-        /*MyCustomString tester = new MyCustomString();
-        tester.setString("apple123xyz apple1 abc0");
-        tester.convertDigitsToNamesInSubstring(1, 23);
-        System.out.println(tester.getString());
-        assertEquals("appleOneTwoThreexyz appleOne abcZero", mycustomstring.getString());*/
 
         mycustomstring.setString("apple123xyz apple1 abc0");
         mycustomstring.convertDigitsToNamesInSubstring(1, 23);
-        System.out.println("\n\n");
-        System.out.println(mycustomstring.getString());
         assertEquals("appleOneTwoThreexyz appleOne abcZero", mycustomstring.getString());
     }
 
+    //Check  to see if all the numbers are being replaced for 1 to n and numbers are converted invidually in non-contiguous
     @Test
-    //Check  to see if all the numbers are being replaced for 1 -n and numbers are converted invidually even if contiguous
     public void testConvertDigitsToNamesInSubstring3() {
         mycustomstring.setString("123 12 abc 12");
         mycustomstring.convertDigitsToNamesInSubstring(1, 13);
         assertEquals("OneTwoThree OneTwo abc OneTwo", mycustomstring.getString());
     }
 
-    //Test when the startPosition > EndPosition  IllegalArgumentException
+    //Check  to see if all the numbers are being replaced for 1 to n and numbers are converted invidually on contiguous scenario
+    @Test
+    public void testConvertDigitsToNamesInSubstring13() {
+        mycustomstring.setString("123 12 abc123 12");
+        mycustomstring.convertDigitsToNamesInSubstring(1, 16);
+        assertEquals("OneTwoThree OneTwo abcOneTwoThree OneTwo", mycustomstring.getString());
+    }
+
+    //Test for IllegalArgumentException when the startPosition > EndPosition
     @Test(expected = IllegalArgumentException.class)
     public void testConvertDigitsToNamesInSubstring4() {
         mycustomstring.setString("123 12 abc 12");
@@ -227,7 +271,7 @@ public class MyCustomStringTest {
         assertEquals("OneTwoThree OneTwo abc OneTwo", mycustomstring.getString());
     }
 
-    //Test when the startPosition > EndPosition (both negative numbers) IllegalArgumentException
+    //Test for IllegalArgumentException when the startPosition > EndPosition (both negative numbers)
     @Test(expected = IllegalArgumentException.class)
     public void testConvertDigitsToNamesInSubstring10() {
         mycustomstring.setString("123 12 abc 12");
@@ -235,7 +279,7 @@ public class MyCustomStringTest {
         assertEquals("OneTwoThree OneTwo abc OneTwo", mycustomstring.getString());
     }
 
-    //Test when the StartPosition = EndPosition NullPointerException
+    //Test for NullPointerException when the StartPosition = EndPosition
     @Test(expected = NullPointerException.class)
     public void testConvertDigitsToNamesInSubstring5() {
         mycustomstring.setString(null);
@@ -243,7 +287,7 @@ public class MyCustomStringTest {
         assertEquals("", mycustomstring.getString());
     }
 
-    //Test when the StartPosition is out of bound i.e. startPosition is 0 :Index Bound Exception
+    //Test for Index Bound Exception when the StartPosition is out of bound i.e. startPosition is 0
     @Test(expected = IndexOutOfBoundsException.class)
     public void testConvertDigitsToNamesInSubstring6() {
         mycustomstring.setString("123 12 abc 12");
@@ -251,7 +295,7 @@ public class MyCustomStringTest {
         assertEquals("", mycustomstring.getString());
     }
 
-    //Test when the StartPosition is out of bound i.e. startPosition is less than 0 :Index Bound Exception
+    //Test for Index Bound Exception when the StartPosition is out of bound i.e. startPosition is less than 0
     @Test(expected = IndexOutOfBoundsException.class)
     public void testConvertDigitsToNamesInSubstring7() {
         mycustomstring.setString("123 12 abc 12");
@@ -259,7 +303,7 @@ public class MyCustomStringTest {
         assertEquals("", mycustomstring.getString());
     }
 
-    //Test when the StartPosition is out of bound i.e. endPosition is greater than string length :Index Bound Exception
+    //Test for Index Bound Exception when the StartPosition is out of bound i.e. endPosition is greater than string length
     @Test(expected = IndexOutOfBoundsException.class)
     public void testConvertDigitsToNamesInSubstring8() {
         mycustomstring.setString("123 12 abc 12");
@@ -267,7 +311,7 @@ public class MyCustomStringTest {
         assertEquals("", mycustomstring.getString());
     }
 
-    //Test when the StartPosition is out of bound i.e. endPosition is out of the bound :Index Bound Exception
+    //Test for Index Bound Exception when the StartPosition is out of bound i.e. endPosition is out of the bound
     @Test(expected = IndexOutOfBoundsException.class)
     public void testConvertDigitsToNamesInSubstring9() {
         mycustomstring.setString("123 12 abc 12");
@@ -275,14 +319,16 @@ public class MyCustomStringTest {
         assertEquals("", mycustomstring.getString());
     }
 
-    @Test //Check  to see if all the numbers are being replaced for >1 to n
+    //Check  to see if all the numbers are being replaced for >1 to n
+    @Test
     public void testConvertDigitsToNamesInSubstring11() {
         mycustomstring.setString("123 12 abc 12");
         mycustomstring.convertDigitsToNamesInSubstring(3, 13);
         assertEquals("12Three OneTwo abc OneTwo", mycustomstring.getString());
     }
 
-    @Test //Check  to see if all the numbers are being replaced for >1 to <n
+    //Check  to see if all the numbers are being replaced for >1 to <n
+    @Test
     public void testConvertDigitsToNamesInSubstring12() {
         mycustomstring.setString("123 12 abc 12");
         mycustomstring.convertDigitsToNamesInSubstring(3, 12);
