@@ -2,7 +2,7 @@ package edu.gatech.seclass;
 
 public class MyCustomString implements MyCustomStringInterface {
 
-    String currentString = "apple 12 orange 12";
+    String currentString = "";
 
     // Returns the current string.
     public String getString() {
@@ -31,7 +31,7 @@ public class MyCustomString implements MyCustomStringInterface {
         //String currentString = "I'd b3tt3r put s0me d161ts in this 5tr1n6, right?";
         //String currentString = "apppleere23 34";
         if (currentString == null) {
-            throw new NullPointerException("String cannot be null");
+            throw new NullPointerException("Null Pointer Exception::: String cannot be null");
         }
         for (int i = 0; i < currentString.length(); i++) {
             char c = currentString.charAt(i);
@@ -54,11 +54,11 @@ public class MyCustomString implements MyCustomStringInterface {
 
     public String getEveryNthCharacterFromBeginningOrEnd(int n, boolean startFromEnd) {
         if (n <= 0) {
-            throw new IllegalArgumentException("N should be greater than 0");
+            throw new IllegalArgumentException("IllegalArgumentException ::: N should be greater than 0");
         }
 
         if (currentString == null) {
-            throw new NullPointerException("String cannot be null");
+            throw new NullPointerException("NullPointerException ::: String cannot be null");
         }
         String returnString = "";
 
@@ -89,12 +89,12 @@ public class MyCustomString implements MyCustomStringInterface {
         if (startPosition > endPosition) {
             throw new IllegalArgumentException("Start Position is greater than End Position");
         }
-        if ((startPosition < 1) || (endPosition > currentString.length())) {
+        if ((startPosition < 1) && (endPosition > currentString.length())) {
             throw new MyIndexOutOfBoundsException("Check your index Bound");
         }
 
         if (currentString == null) {
-            throw new NullPointerException("String cannot be null");
+            throw new NullPointerException("NullPointer Exception:: String cannot be null");
         }
         String realString = "";
         String alphabetSum = "";
@@ -144,6 +144,7 @@ public class MyCustomString implements MyCustomStringInterface {
 
         realString = firstPartString + alphabetSum + endPartString;
         currentString = realString;
+
     }
 
 }
