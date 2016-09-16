@@ -53,10 +53,10 @@ public class TipCalculatorActivity extends AppCompatActivity {
      *
      */
     public void letsDoCalculation(Float amountValue, int partySize) {
-        if ((amountValue == 0) || (partySize == 0)) {
+        if ((partySize == 0)) {
             reset();
             Toast.makeText(getApplicationContext(),
-                    "Amount or Party size cant be 0", Toast.LENGTH_LONG).show();
+                    "Invalid Party size! Should be greater than 0!", Toast.LENGTH_LONG).show();
 
         } else {
             int Tip15p = (int) (Math.round((.15 * amountValue) / partySize));
@@ -94,10 +94,12 @@ public class TipCalculatorActivity extends AppCompatActivity {
         scoreView.setText(String.valueOf(tip25));
     }
 
+    // Methods to display split amount per person
+
     public void displayFor15PTotal(int total15) {
         TextView scoreView = (TextView) findViewById(R.id.fifteenPercentTotalValue);
         scoreView.setText(String.valueOf(total15));
-        //scoreView.setText(total15);
+
     }
 
     public void displayFor20PTotal(int total20) {
@@ -108,7 +110,6 @@ public class TipCalculatorActivity extends AppCompatActivity {
     public void displayFor25PTotal(int total25) {
         TextView scoreView = (TextView) findViewById(R.id.twentyfivePercentTotalValue);
         scoreView.setText(String.valueOf(total25));
-        //last00
     }
 
     /* Performs resets for all the tip and amount values
@@ -142,19 +143,16 @@ public class TipCalculatorActivity extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.menu_tip_calculator, menu);
         return true;
     }
-
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             return true;
         }
-
         return super.onOptionsItemSelected(item);
     }*/
 }
