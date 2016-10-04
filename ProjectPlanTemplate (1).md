@@ -36,7 +36,7 @@ Software Concept:
 - *Entrance criteria*
 	To enter this stage, the software concept document must be completed and handed over to the developers.
 
-- *Exit criteria *
+- *Exit criteria*
 	Almost all of the requirements, specifications should be captured at this phase. Since we are implementing waterfall process, any changes after this phase is harder and expensive to implement.  
 
 
