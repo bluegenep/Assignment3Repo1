@@ -29,6 +29,17 @@ Software Concept:
 	**- Exit criteria:** The customer should provide the document detailing all the information of the product.
 
 
+- *Requirement Analysis:*
+- *Activity description*
+	At this development stage, all the requirements of the software product are to be captured. This document should have all the pertaining information regarding the software, its behaviour and specifications. 
+
+- *Entrance criteria*
+	To enter this stage, the software concept document must be completed and handed over to the developers.
+
+- *Exit criteria *
+	Almost all of the requirements, specifications should be captured at this phase. Since we are implementing waterfall process, any changes after this phase is harder and expensive to implement.  
+
+
 
 
 Requirement Analysis
@@ -37,6 +48,8 @@ Detailed Design
 Coding and Debugging
 System Testing
 
+
+developers/requirement engineers co-ordinate with customers to further clarify on the requirements and specifications. Any unclear specifications are discussed and missing pieces are determined.
 
 ## 3 Team
 
